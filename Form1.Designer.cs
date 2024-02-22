@@ -28,18 +28,100 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ListBoxData = new ListBox();
+            LblSearchData = new Label();
+            TextBoxSearchData = new TextBox();
+            ButtonSearchData = new Button();
+            ButtonSortData = new Button();
+            TextBoxEditItem = new TextBox();
+            LblEditItem = new Label();
             SuspendLayout();
+            // 
+            // ListBoxData
+            // 
+            ListBoxData.FormattingEnabled = true;
+            ListBoxData.ItemHeight = 15;
+            ListBoxData.Location = new Point(12, 56);
+            ListBoxData.Name = "ListBoxData";
+            ListBoxData.Size = new Size(249, 184);
+            ListBoxData.TabIndex = 0;
+            // 
+            // LblSearchData
+            // 
+            LblSearchData.AutoSize = true;
+            LblSearchData.Location = new Point(12, 243);
+            LblSearchData.Name = "LblSearchData";
+            LblSearchData.Size = new Size(71, 15);
+            LblSearchData.TabIndex = 1;
+            LblSearchData.Text = "Search data:";
+            // 
+            // TextBoxSearchData
+            // 
+            TextBoxSearchData.Location = new Point(12, 261);
+            TextBoxSearchData.Name = "TextBoxSearchData";
+            TextBoxSearchData.Size = new Size(168, 23);
+            TextBoxSearchData.TabIndex = 2;
+            // 
+            // ButtonSearchData
+            // 
+            ButtonSearchData.Location = new Point(186, 260);
+            ButtonSearchData.Name = "ButtonSearchData";
+            ButtonSearchData.Size = new Size(75, 24);
+            ButtonSearchData.TabIndex = 3;
+            ButtonSearchData.Text = "Search";
+            ButtonSearchData.UseVisualStyleBackColor = true;
+            // 
+            // ButtonSortData
+            // 
+            ButtonSortData.Location = new Point(12, 290);
+            ButtonSortData.Name = "ButtonSortData";
+            ButtonSortData.Size = new Size(249, 23);
+            ButtonSortData.TabIndex = 4;
+            ButtonSortData.Text = "Sort data";
+            ButtonSortData.UseVisualStyleBackColor = true;
+            // 
+            // TextBoxEditItem
+            // 
+            TextBoxEditItem.Location = new Point(12, 27);
+            TextBoxEditItem.Name = "TextBoxEditItem";
+            TextBoxEditItem.Size = new Size(249, 23);
+            TextBoxEditItem.TabIndex = 5;
+            // 
+            // LblEditItem
+            // 
+            LblEditItem.AutoSize = true;
+            LblEditItem.Location = new Point(12, 9);
+            LblEditItem.Name = "LblEditItem";
+            LblEditItem.Size = new Size(57, 15);
+            LblEditItem.TabIndex = 6;
+            LblEditItem.Text = "Edit item:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(275, 329);
+            Controls.Add(LblEditItem);
+            Controls.Add(TextBoxEditItem);
+            Controls.Add(ButtonSortData);
+            Controls.Add(ButtonSearchData);
+            Controls.Add(TextBoxSearchData);
+            Controls.Add(LblSearchData);
+            Controls.Add(ListBoxData);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Astronomical Processing";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ListBox ListBoxData;
+        private Label LblSearchData;
+        private TextBox TextBoxSearchData;
+        private Button ButtonSearchData;
+        private Button ButtonSortData;
+        private TextBox TextBoxEditItem;
+        private Label LblEditItem;
     }
 }
