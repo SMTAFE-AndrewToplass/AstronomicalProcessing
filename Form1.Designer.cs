@@ -1,6 +1,6 @@
 ﻿namespace AstronomicalProcessing
 {
-    partial class Form1
+    partial class AstronomicalProcessing
     {
         /// <summary>
         ///  Required designer variable.
@@ -96,7 +96,7 @@
             LblEditItem.TabIndex = 6;
             LblEditItem.Text = "Edit item:";
             // 
-            // Form1
+            // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -108,7 +108,7 @@
             Controls.Add(TextBoxSearchData);
             Controls.Add(LblSearchData);
             Controls.Add(ListBoxData);
-            Name = "Form1";
+            Name = "AstronomicalProcessing";
             Text = "Astronomical Processing";
             ResumeLayout(false);
             PerformLayout();
