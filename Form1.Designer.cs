@@ -39,6 +39,7 @@
             // 
             // ListBoxData
             // 
+            ListBoxData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ListBoxData.FormattingEnabled = true;
             ListBoxData.ItemHeight = 15;
             ListBoxData.Location = new Point(12, 56);
@@ -48,6 +49,7 @@
             // 
             // LblSearchData
             // 
+            LblSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LblSearchData.AutoSize = true;
             LblSearchData.Location = new Point(12, 243);
             LblSearchData.Name = "LblSearchData";
@@ -57,6 +59,7 @@
             // 
             // TextBoxSearchData
             // 
+            TextBoxSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TextBoxSearchData.Location = new Point(12, 261);
             TextBoxSearchData.Name = "TextBoxSearchData";
             TextBoxSearchData.Size = new Size(168, 23);
@@ -64,6 +67,7 @@
             // 
             // ButtonSearchData
             // 
+            ButtonSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ButtonSearchData.Location = new Point(186, 260);
             ButtonSearchData.Name = "ButtonSearchData";
             ButtonSearchData.Size = new Size(75, 24);
@@ -73,6 +77,7 @@
             // 
             // ButtonSortData
             // 
+            ButtonSortData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ButtonSortData.Location = new Point(12, 290);
             ButtonSortData.Name = "ButtonSortData";
             ButtonSortData.Size = new Size(249, 23);
@@ -82,6 +87,7 @@
             // 
             // TextBoxEditItem
             // 
+            TextBoxEditItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TextBoxEditItem.Location = new Point(12, 27);
             TextBoxEditItem.Name = "TextBoxEditItem";
             TextBoxEditItem.Size = new Size(249, 23);
