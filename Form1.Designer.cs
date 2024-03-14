@@ -69,7 +69,7 @@
             // 
             // ButtonSearchData
             // 
-            ButtonSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ButtonSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ButtonSearchData.Location = new Point(195, 334);
             ButtonSearchData.Name = "ButtonSearchData";
             ButtonSearchData.Size = new Size(75, 24);
