@@ -5,8 +5,6 @@
 // Stores number of neutrino interactions per hour, allows for editing, sorting
 // and searching through the data.
 
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-
 namespace AstronomicalProcessing
 {
     public partial class AstronomicalProcessing : Form
@@ -45,7 +43,7 @@ namespace AstronomicalProcessing
                 // Check if index value is within the bounds of the data array.
                 if (idx >= 0 && idx < data.Length)
                 {
-                    // Assign the edited value to the array and update the listbox.
+                    // Apply edited value to the array and update the listbox.
                     data[idx] = value;
                     ShowArray(data, ListBoxData, true);
                 }
@@ -62,11 +60,12 @@ namespace AstronomicalProcessing
             }
         }
 
-        // Performs the data edit when pressing enter
+        // Applies edit from textbox into the data when pressing enter.
         private void TextBoxEditItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
+                // If the key enter key was pressed, click the edit button.
                 ButtonEditApply.PerformClick();
                 e.SuppressKeyPress = true;
             }
@@ -101,7 +100,7 @@ namespace AstronomicalProcessing
                 int idx = BinarySearch(data, value);
                 if (idx >= 0)
                 {
-                    // Select item that was found in the array.
+                    // Select & highlight item that was found in the array.
                     ListBoxData.SelectedIndex = idx;
                     // Show message saying where the item was found.
                     MessageBox.Show($"Item found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,18 +118,19 @@ namespace AstronomicalProcessing
             }
 
         }
-        
-        // Performs the Search when pressing enter
+
+        // Performs the Search when pressing enter.
         private void TextBoxSearchData_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
+                // If the key enter key was pressed, click the search button.
                 ButtonSearchData.PerformClick();
                 e.SuppressKeyPress = true;
             }
         }
 
-        // Sorts the data using bubble sort then displaying sorted array
+        // Sorts the data using bubble sort then displaying sorted array.
         private void ButtonSortData_Click(object sender, EventArgs e)
         {
             BubbleSort(data);
@@ -176,25 +176,22 @@ namespace AstronomicalProcessing
         }
 
         /// <summary>
-        /// Sorts the data from smallest to largest integer.
+        /// Sorts the data from smallest to largest integer using the Bubble sort algorithm.
         /// </summary>
-        /// <param name="array">Array you want to sort</param
-        private void BubbleSort(int[] array)
+        /// <param name="array">Array to be sorted.</param
+        private static void BubbleSort(int[] array)
         {
-            // Temp hold the value of the next item so it can be swapped.
-            int temp = 0;
-            // 2 loops to make sure every value gets sorted.
+            // Use two loops to make sure every value gets sorted.
             for (int outer = 0; outer < array.Length; outer++)
             {
-                // Moves the largest item to the top 
+                // Move larger values to the end of the array.
                 for (int inner = 0; inner < array.Length - 1; inner++)
                 {
-                    // If the current item is larger than the next item it moves up
+                    // If the current item is larger than the next, then swap.
                     if (array[inner] > array[inner + 1])
                     {
-                        temp = array[inner + 1];
-                        array[inner + 1] = array[inner];
-                        array[inner] = temp;
+                        // Temp hold the value of the next item so it can be swapped.
+                        (array[inner], array[inner + 1]) = (array[inner + 1], array[inner]);
                     }
                 }
             }
