@@ -59,11 +59,14 @@ namespace AstronomicalProcessing
         private void ButtonSearchData_Click(object sender, EventArgs e)
         {
             // TODO: Run binary search on list box data with search text box data.
+
         }
 
+        // Sorts the data using bubble sort then displaying sorted array
         private void ButtonSortData_Click(object sender, EventArgs e)
         {
-            // TODO: Run bubble sort on list box data.
+            BubbleSort(data);
+            ShowArray(data, ListBoxData);
         }
 
         /// <summary>
@@ -103,6 +106,31 @@ namespace AstronomicalProcessing
             if (restore) listBox.SelectedIndex = idx;
         }
 
-        // TODO: Add any methods for array data (search, sort, display)...
+        /// <summary>
+        /// Sorts the data from smallest to largest integer.
+        /// </summary>
+        /// <param name="array">Array you want to sort</param
+        private void BubbleSort(int[] array)
+        {
+            // Temp hold the value of the next item so it can be swapped.
+            int temp = 0;
+            // 2 loops to make sure every value gets sorted.
+            for (int outer = 0; outer < array.Length; outer++)
+            {
+                // Moves the largest item to the top 
+                for (int inner = 0; inner < array.Length - 1; inner++)
+                {
+                    // If the current item is larger than the next item it moves up
+                    if (array[inner] > array[inner + 1])
+                    {
+                        temp = array[inner + 1];
+                        array[inner + 1] = array[inner];
+                        array[inner] = temp;
+                    }
+                }
+            }
+        }
+
+        // TODO: Add any methods for array data (search, sort, display)... 
     }
 }
