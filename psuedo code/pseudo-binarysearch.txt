@@ -1,0 +1,17 @@
+FUNCTION BinarySearch, input(TYPE: ARRAY), target(TYPE: int)
+    mid = 0
+    low = 0
+    high = LENGTH(input)
+
+    WHILE low <= high
+        mid = (low + high) / 2
+        if input[mid] = target
+            RETURN mid
+        ELSE IF input[mid] >= target
+            high = mid - 1
+        ELSE
+            low = mid + 1
+        END IF
+    END WHILE
+    RETURN -1
+END FUNCTION
