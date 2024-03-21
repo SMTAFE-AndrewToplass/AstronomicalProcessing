@@ -103,7 +103,7 @@ namespace AstronomicalProcessing
                     // Select & highlight item that was found in the array.
                     ListBoxData.SelectedIndex = idx;
                     // Show message saying where the item was found.
-                    MessageBox.Show($"Item found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Item {value} found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
