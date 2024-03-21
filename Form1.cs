@@ -207,7 +207,7 @@ namespace AstronomicalProcessing
         {
             int mid,
                 low = 0,
-                high = array.Length;
+                high = array.Length - 1;
             while (low <= high)
             {
                 // Midpoint between low and high search limits.
