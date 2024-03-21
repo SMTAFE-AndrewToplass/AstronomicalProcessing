@@ -5,6 +5,8 @@
 // Stores number of neutrino interactions per hour, allows for editing, sorting
 // and searching through the data.
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+
 namespace AstronomicalProcessing
 {
     public partial class AstronomicalProcessing : Form
@@ -19,6 +21,9 @@ namespace AstronomicalProcessing
         // Array for storing the integer data.
         static readonly int max = 24;
         readonly int[] data = new int[max];
+
+        // Store data sorted status, used for searching.
+        private bool isSorted = false;
 
         // When selecting an item in the listbox, update the edit textbox.
         private void ListBoxData_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,6 +40,7 @@ namespace AstronomicalProcessing
             {
                 // Get the index of selected listbox item.
                 int idx = ListBoxData.SelectedIndex;
+                isSorted = false;
 
                 // Check if index value is within the bounds of the data array.
                 if (idx >= 0 && idx < data.Length)
@@ -51,14 +57,56 @@ namespace AstronomicalProcessing
             }
             else
             {
-                MessageBox.Show("You must enter an integer number.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
 
+        // Search for data in the array from the search textbox when clicking
+        // the search button.
         private void ButtonSearchData_Click(object sender, EventArgs e)
         {
-            // TODO: Run binary search on list box data with search text box data.
+            // If data is not sorted before search, ask user to sort the data.
+            if (!isSorted)
+            {
+                // Ask user if they want to sort the data, storing the answer.
+                var answer = MessageBox.Show("Data needs to be sorted before searching. Would you like to sort the data?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (answer == DialogResult.Yes)
+                {
+                    // If they answered Yes, click the sort button then search.
+                    ButtonSortData.PerformClick();
+                }
+                else
+                {
+                    // If they answered No, cancel the operation.
+                    return;
+                }
+            }
+
+            // Try and get a data value from search textbox.
+            if (int.TryParse(TextBoxSearchData.Text, out int value))
+            {
+                // Run the binary search on the data array with the input from
+                // the search textbox.
+                int idx = BinarySearch(data, value);
+                if (idx >= 0)
+                {
+                    // Select item that was found in the array.
+                    ListBoxData.SelectedIndex = idx;
+                    // Show message saying where the item was found.
+                    MessageBox.Show($"Item found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Warn user that the item they searched for was not found.
+                    MessageBox.Show($"Item not found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
         }
 
@@ -66,6 +114,7 @@ namespace AstronomicalProcessing
         private void ButtonSortData_Click(object sender, EventArgs e)
         {
             BubbleSort(data);
+            isSorted = true;
             ShowArray(data, ListBoxData);
         }
 
@@ -131,6 +180,41 @@ namespace AstronomicalProcessing
             }
         }
 
-        // TODO: Add any methods for array data (search, sort, display)... 
+        /// <summary>
+        /// Search for data inside integer array using the binary search algorithm.
+        /// </summary>
+        /// <param name="array">Array containing data to search through.</param>
+        /// <param name="target">Data to find the index of.</param>
+        /// <returns>Index of target inside array, returns -1 is nothing was found.</returns>
+        private static int BinarySearch(int[] array, int target)
+        {
+            int mid,
+                low = 0,
+                high = array.Length;
+            while (low <= high)
+            {
+                // Midpoint between low and high search limits.
+                mid = (low + high) / 2;
+                if (array[mid] == target)
+                {
+                    // Target was found, return index.
+                    return mid;
+                }
+                else if (array[mid] > target)
+                {
+                    // Target is smaller than middle value, stop searching for
+                    // larger values.
+                    high = mid - 1;
+                }
+                else
+                {
+                    // Target is larger than middle value, stop searching for
+                    // smaller values.
+                    low = mid + 1;
+                }
+            }
+            // If search doesn't find any matching items, return -1.
+            return -1;
+        }
     }
 }
