@@ -66,6 +66,7 @@
             TextBoxSearchData.Name = "TextBoxSearchData";
             TextBoxSearchData.Size = new Size(177, 23);
             TextBoxSearchData.TabIndex = 2;
+            TextBoxSearchData.KeyDown += TextBoxSearchData_KeyDown;
             // 
             // ButtonSearchData
             // 
@@ -96,6 +97,7 @@
             TextBoxEditItem.Name = "TextBoxEditItem";
             TextBoxEditItem.Size = new Size(258, 23);
             TextBoxEditItem.TabIndex = 5;
+            TextBoxEditItem.KeyDown += TextBoxEditItem_KeyDown;
             // 
             // LblEditItem
             // 

@@ -62,6 +62,16 @@ namespace AstronomicalProcessing
             }
         }
 
+        // Performs the data edit when pressing enter
+        private void TextBoxEditItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonEditApply.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
+
         // Search for data in the array from the search textbox when clicking
         // the search button.
         private void ButtonSearchData_Click(object sender, EventArgs e)
@@ -108,6 +118,16 @@ namespace AstronomicalProcessing
                 return;
             }
 
+        }
+        
+        // Performs the Search when pressing enter
+        private void TextBoxSearchData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ButtonSearchData.PerformClick();
+                e.SuppressKeyPress = true;
+            }
         }
 
         // Sorts the data using bubble sort then displaying sorted array
