@@ -1,11 +1,11 @@
 FUNCTION BubbleSort input(TYPE: ARRAY)
-    temp = 0
-    FOR outer = 0 TO LENGTH(input)
-        FOR inner = 0 TO LENGTH(input)
-            IF input[inner] > input[inner + 1]
-                temp = input[inner + 1]
-                input[inner + 1] = input[inner]
-                input[inner] = temp
+    SET temp TO 0
+    FOR outer FROM 0 TO LENGTH(input)
+        FOR inner FROM 0 TO LENGTH(input)
+            IF input[inner] IS GREATER THAN input[inner + 1]
+                SET temp TO input[inner + 1]
+                SET input[inner + 1] TO input[inner]
+                SET input[inner] TO temp
             END IF
         END FOR
     END FOR

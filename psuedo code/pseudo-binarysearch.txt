@@ -1,16 +1,16 @@
 FUNCTION BinarySearch, input(TYPE: ARRAY), target(TYPE: int)
-    mid = 0
-    low = 0
-    high = LENGTH(input)
+    SET mid TO 0
+    SET low TO 0
+    SET high TO LENGTH(input)
 
-    WHILE low <= high
-        mid = (low + high) / 2
-        if input[mid] = target
+    WHILE low IS LESS THAN OR EQUAL TO high
+        SET mid TO (low + high) / 2
+        if input[mid] EQUALS target
             RETURN mid
-        ELSE IF input[mid] >= target
-            high = mid - 1
+        ELSE IF input[mid] IS GREATER THAN OR EQUAL TO target
+            SET high TO mid - 1
         ELSE
-            low = mid + 1
+            SET low TO mid + 1
         END IF
     END WHILE
     RETURN -1
