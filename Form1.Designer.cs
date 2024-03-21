@@ -43,9 +43,9 @@
             ListBoxData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ListBoxData.FormattingEnabled = true;
             ListBoxData.ItemHeight = 15;
-            ListBoxData.Location = new Point(12, 85);
+            ListBoxData.Location = new Point(12, 56);
             ListBoxData.Name = "ListBoxData";
-            ListBoxData.Size = new Size(278, 229);
+            ListBoxData.Size = new Size(278, 274);
             ListBoxData.TabIndex = 0;
             ListBoxData.SelectedIndexChanged += ListBoxData_SelectedIndexChanged;
             // 
@@ -53,7 +53,7 @@
             // 
             LblSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             LblSearchData.AutoSize = true;
-            LblSearchData.Location = new Point(12, 317);
+            LblSearchData.Location = new Point(12, 333);
             LblSearchData.Name = "LblSearchData";
             LblSearchData.Size = new Size(71, 15);
             LblSearchData.TabIndex = 1;
@@ -62,7 +62,7 @@
             // TextBoxSearchData
             // 
             TextBoxSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            TextBoxSearchData.Location = new Point(12, 335);
+            TextBoxSearchData.Location = new Point(12, 351);
             TextBoxSearchData.Name = "TextBoxSearchData";
             TextBoxSearchData.Size = new Size(197, 23);
             TextBoxSearchData.TabIndex = 2;
@@ -71,9 +71,9 @@
             // ButtonSearchData
             // 
             ButtonSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            ButtonSearchData.Location = new Point(215, 334);
+            ButtonSearchData.Location = new Point(215, 350);
             ButtonSearchData.Name = "ButtonSearchData";
-            ButtonSearchData.Size = new Size(75, 24);
+            ButtonSearchData.Size = new Size(75, 25);
             ButtonSearchData.TabIndex = 3;
             ButtonSearchData.Text = "Search";
             ButtonSearchData.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@
             // ButtonSortData
             // 
             ButtonSortData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            ButtonSortData.Location = new Point(12, 364);
+            ButtonSortData.Location = new Point(12, 380);
             ButtonSortData.Name = "ButtonSortData";
-            ButtonSortData.Size = new Size(278, 23);
+            ButtonSortData.Size = new Size(278, 25);
             ButtonSortData.TabIndex = 4;
             ButtonSortData.Text = "Sort data";
             ButtonSortData.UseVisualStyleBackColor = true;
@@ -95,7 +95,7 @@
             TextBoxEditItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TextBoxEditItem.Location = new Point(12, 27);
             TextBoxEditItem.Name = "TextBoxEditItem";
-            TextBoxEditItem.Size = new Size(278, 23);
+            TextBoxEditItem.Size = new Size(197, 23);
             TextBoxEditItem.TabIndex = 5;
             TextBoxEditItem.KeyDown += TextBoxEditItem_KeyDown;
             // 
@@ -110,12 +110,12 @@
             // 
             // ButtonEditApply
             // 
-            ButtonEditApply.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            ButtonEditApply.Location = new Point(12, 56);
+            ButtonEditApply.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ButtonEditApply.Location = new Point(215, 26);
             ButtonEditApply.Name = "ButtonEditApply";
-            ButtonEditApply.Size = new Size(278, 23);
+            ButtonEditApply.Size = new Size(75, 25);
             ButtonEditApply.TabIndex = 7;
-            ButtonEditApply.Text = "Apply edit";
+            ButtonEditApply.Text = "Apply";
             ButtonEditApply.UseVisualStyleBackColor = true;
             ButtonEditApply.Click += ButtonEditApply_Click;
             // 
@@ -123,7 +123,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(304, 405);
+            ClientSize = new Size(304, 419);
             Controls.Add(ButtonEditApply);
             Controls.Add(LblEditItem);
             Controls.Add(TextBoxEditItem);
