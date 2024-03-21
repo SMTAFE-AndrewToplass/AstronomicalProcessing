@@ -1,3 +1,10 @@
+// Andrew Toplass, La-Jean Harvey, Sprint One
+// Date: 21/03/2024
+// Version: 1.0
+// Astronomical Processing
+// Stores number of neutrino interactions per hour, allows for editing, sorting
+// and searching through the data.
+
 namespace AstronomicalProcessing
 {
     public partial class AstronomicalProcessing : Form
@@ -9,34 +16,36 @@ namespace AstronomicalProcessing
             ShowArray(data, ListBoxData);
         }
 
-        // Data array.
+        // Array for storing the integer data.
         static readonly int max = 24;
         readonly int[] data = new int[max];
 
+        // When selecting an item in the listbox, update the edit textbox.
         private void ListBoxData_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // When selecting an item in the ListBox, update the EditItem TextBox.
             TextBoxEditItem.Text = ListBoxData.Text;
         }
 
+        // Edit array item of currently selected listbox item with data from
+        // the edit textbox when clicking the edit button.
         private void ButtonEditApply_Click(object sender, EventArgs e)
         {
-            // Try and get a data value from the EditItem Textbox.
+            // Try and get a data value from edit textbox.
             if (int.TryParse(TextBoxEditItem.Text, out int value))
             {
-                // Get the selected index of the ListBox Item.
+                // Get the index of selected listbox item.
                 int idx = ListBoxData.SelectedIndex;
 
                 // Check if index value is within the bounds of the data array.
                 if (idx >= 0 && idx < data.Length)
                 {
-                    // Assign the edited value to the array and update the ListBox.
+                    // Assign the edited value to the array and update the listbox.
                     data[idx] = value;
                     ShowArray(data, ListBoxData, true);
                 }
                 else
                 {
-                    MessageBox.Show("Please select an item to edit", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please select an item to edit.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -68,7 +77,7 @@ namespace AstronomicalProcessing
             Random rand = new();
             for (int i = 0; i < array.Length; i++)
             {
-                // Add new random number between min and max (0 and 90 by default).
+                // Add new random number between min & max (0 & 90 by default).
                 array[i] = rand.Next(min, max);
             }
         }
