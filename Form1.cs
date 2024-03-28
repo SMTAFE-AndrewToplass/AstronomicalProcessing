@@ -178,6 +178,28 @@ namespace AstronomicalProcessing
             ShowArray(data, ListBoxData);
         }
 
+        // Get the mode of the data when clicking on the mode button.
+        private void ButtonMode_Click(object sender, EventArgs e)
+        {
+            int mode = Mode(data);
+            if (mode < 0)
+            {
+                // If mode equals -1, then output: No Mode.
+                TextBoxMode.Text = "No Mode";
+            }
+            else
+            {
+                // Otherwise, output the mode of the array.
+                TextBoxMode.Text = mode.ToString();
+            }
+        }
+
+        // Get the average of the data when clicking the average button.
+        private void ButtonAverage_Click(object sender, EventArgs e)
+        {
+            TextBoxAverage.Text = $"{Average(data):f2}";
+        }
+
         /// <summary>
         /// Fills array with random integers (between 10 and 90 by default).
         /// </summary>
@@ -294,16 +316,6 @@ namespace AstronomicalProcessing
             return -1;
         }
 
-        private void ButtonMode_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ButtonAverage_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Calculate the average from an array of integer inputs.
         /// </summary>
@@ -311,11 +323,14 @@ namespace AstronomicalProcessing
         /// <returns>The average of all the integers in the input array, as a double.</returns>
         private static double Average(int[] input)
         {
+            // Get the sum of the data using a for loop.
             int sum = 0;
             for (int i = 0; i < input.Length; i++)
             {
+                // Add each array value to the sum integer.
                 sum += input[i];
             }
+            // Divide the sum by the number of items, converting to a double.
             return sum / (double)input.Length;
         }
 
@@ -354,7 +369,5 @@ namespace AstronomicalProcessing
             }
             return mode;
         }
-
-        
     }
 }
