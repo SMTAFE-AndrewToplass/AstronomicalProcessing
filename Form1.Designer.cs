@@ -142,6 +142,7 @@
             ButtonMidRange.TabIndex = 8;
             ButtonMidRange.Text = "Mid-range";
             ButtonMidRange.UseVisualStyleBackColor = true;
+            ButtonMidRange.Click += ButtonMidRange_Click;
             // 
             // TextBoxMidRange
             // 
@@ -210,6 +211,7 @@
             ButtonRange.TabIndex = 14;
             ButtonRange.Text = "Range";
             ButtonRange.UseVisualStyleBackColor = true;
+            ButtonRange.Click += ButtonRange_Click;
             // 
             // ButtonSequentialSearch
             // 

@@ -179,6 +179,18 @@ namespace AstronomicalProcessing
             ShowArray(data, ListBoxData);
         }
 
+        // Finds the range and then displays it.
+        private void ButtonRange_Click(object sender, EventArgs e)
+        {
+            TextBoxRange.Text = Range(data).ToString();
+        }
+        
+        // Finds the Mid-Range and then displays it.
+        private void ButtonMidRange_Click(object sender, EventArgs e)
+        {
+            TextBoxMidRange.Text = $"{MidRange(data):f2}";
+        }
+
         // Get the mode of the data when clicking on the mode button.
         private void ButtonMode_Click(object sender, EventArgs e)
         {
@@ -296,6 +308,68 @@ namespace AstronomicalProcessing
             // If search doesn't find any matching items, return -1.
             return -1;
         }
+
+        /// <summary>
+        /// Does the Range Calculation.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The data array you want to find the Range of.</returns>
+        private static int Range(int[] input)
+        {
+            int largest = Largest(input);
+            int smallest = Smallest(input);
+            return largest - smallest;
+        }
+
+        /// <summary>
+        /// Does the Mid-Range Calculation.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The data array you want to find the Mid-Range of.</returns>
+        private static double MidRange(int[] input)
+        {
+            int largest = Largest(input);
+            int smallest = Smallest(input);
+            return (largest + smallest) / 2.0;
+        }
+
+        /// <summary>
+        /// Finds the Largest number in an Array.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The data you want to find the largest number for.</returns>
+        static private int Largest(int[] input)
+        {
+            int largest = input[0];
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] > largest)
+                {
+                    largest = input[i];
+                }
+            }
+            return largest;
+        }
+
+        /// <summary>
+        /// Finds the Smallest number in an Array.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The data you want to find the smallest number for.</returns>
+        static private int Smallest(int[] input)
+        {
+            int smallest = input[0];
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] < smallest)
+                {
+                    smallest = input[i];
+                }
+            }
+            return smallest;
+        } 
 
         /// <summary>
         /// Performs a sequential search.
