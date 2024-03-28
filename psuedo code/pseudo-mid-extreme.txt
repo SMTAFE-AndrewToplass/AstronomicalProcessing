@@ -1,9 +1,9 @@
-FUNCTION Range, input(TYPE: ARRAY)
+FUNCTION Mid-Extreme, input(TYPE: ARRAY)
     SET largest TO input[i]
     SET smallest TO input[i]
     FOR i FROM 1 TO LENGTH(input)
         IF input[i] IS GREATER THAN largest THEN SET largest TO input[i]
         IF input[i] IS LESS THAN smallest THEN SET smallest TO input[i]
     END FOR
-    RETURN largest - smallest
+    return (smallest + largest) / 2
 END FUNCTION
