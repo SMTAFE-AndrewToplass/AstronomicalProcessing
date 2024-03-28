@@ -1,0 +1,8 @@
+FUNCTION SequentialSearch, input(TYPE: ARRAY), target(TYPE: int)
+    FOR i FROM 0 TO LENGTH(input)
+        IF input[i] EQUALS target
+            RETURN i
+        END IF
+    END FOR
+    RETURN -1
+END FUNCTION

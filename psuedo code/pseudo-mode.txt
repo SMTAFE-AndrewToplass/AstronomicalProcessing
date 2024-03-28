@@ -1,0 +1,18 @@
+FUNCTION Mode, input(TYPE: ARRAY)
+    SET count TO NEW DICTIONARY
+    SET max TO 1
+    SET mode to 0
+    FOR i FROM 0 TO LENGTH(input)
+        IF count VALUE input[i] EXISTS
+            INCREMENT count VALUE input[i] BY 1
+
+            IF count IS GREATER THAN max
+                SET max TO count
+                SET mode TO input[i]
+            END IF
+        ELSE
+            SET count VALUE input[i] TO 1
+        END IF
+    END FOR
+    RETURN mode
+END FUNCTION

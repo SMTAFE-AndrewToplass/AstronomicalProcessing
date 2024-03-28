@@ -288,7 +288,7 @@
             Controls.Add(TextBoxSearchData);
             Controls.Add(LblSearchData);
             Controls.Add(ListBoxData);
-            MinimumSize = new Size(300, 400);
+            MinimumSize = new Size(360, 400);
             Name = "AstronomicalProcessing";
             Text = "Astronomical Processing";
             TableLayoutMathsFunctions.ResumeLayout(false);

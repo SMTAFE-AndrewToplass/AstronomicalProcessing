@@ -1,0 +1,7 @@
+FUNCTION Average, input(TYPE: ARRAY)
+    SET sum TO 0
+    FOR i FROM 0 TO LENGTH(input)
+        SET sum TO sum + input[i]
+    END FOR
+    RETURN sum / LENGTH(input)
+END FUNCTION
