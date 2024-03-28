@@ -116,7 +116,6 @@ namespace AstronomicalProcessing
                 MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
         }
 
         // Performs the Search when pressing enter.
@@ -124,9 +123,50 @@ namespace AstronomicalProcessing
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // If the key enter key was pressed, click the search button.
-                ButtonSearchData.PerformClick();
-                e.SuppressKeyPress = true;
+                // If shift key is held down, then perform sequential search.
+                if (e.Modifiers == Keys.Shift)
+                {
+                    // If the key enter key was pressed, click the search button.
+                    ButtonSequentialSearch.PerformClick();
+                    e.SuppressKeyPress = true;
+                }
+                // Otherwise, perform binary search, which requires sorting.
+                else
+                {
+                    // If the key enter key was pressed, click the search button.
+                    ButtonSearchData.PerformClick();
+                    e.SuppressKeyPress = true;
+                }
+                
+            }
+        }
+
+        // Performs the sequential search when clicking the sequential search button.
+        private void ButtonSequentialSearch_Click(object sender, EventArgs e)
+        {
+            // Try and get a data value from search textbox.
+            if (int.TryParse(TextBoxSearchData.Text, out int value))
+            {
+                // Run the binary search on the data array with the input from
+                // the search textbox.
+                int idx = SequentialSearch(data, value);
+                if (idx >= 0)
+                {
+                    // Select & highlight item that was found in the array.
+                    ListBoxData.SelectedIndex = idx;
+                    // Show message saying where the item was found.
+                    MessageBox.Show($"Item {value} found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Warn user that the item they searched for was not found.
+                    MessageBox.Show($"Item not found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -233,5 +273,88 @@ namespace AstronomicalProcessing
             // If search doesn't find any matching items, return -1.
             return -1;
         }
+
+        /// <summary>
+        /// Performs a sequential search.
+        /// </summary>
+        /// <param name="input">An array of integers to search through.</param>
+        /// <param name="target">The integer to search for.</param>
+        /// <returns>The index of the target integer, or -1 if is wasn't found.</returns>
+        private static int SequentialSearch(int[] input, int target)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                // If the current element is equal to the target, return the index.
+                if (input[i] == target)
+                {
+                    return i;
+                }
+            }
+            // If the target wasn't found, then return -1.
+            return -1;
+        }
+
+        private void ButtonMode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonAverage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Calculate the average from an array of integer inputs.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The average of all the integers in the input array, as a double.</returns>
+        private static double Average(int[] input)
+        {
+            int sum = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                sum += input[i];
+            }
+            return sum / (double)input.Length;
+        }
+
+        /// <summary>
+        /// Calculates the mode from an array of integer inputs.
+        /// </summary>
+        /// <param name="input">An array of integers</param>
+        /// <returns>The most frequently occuring number inside the array, or -1 if no mode is found.</returns>
+        private static int Mode(int[] input)
+        {
+            // Use dictionary to keep track of occurrences.
+            Dictionary<int, int> count = [];
+
+            // Keep track of current mode.
+            int mode = -1;
+            // Number of occurrences of current mode.
+            int max = 1;
+
+            // Loop through every array element to search for occurrences.
+            for (int i = 0; i < input.Length; i++)
+            {
+                // Add dictionary key for array element, defaulting to 1.
+                if (!count.TryAdd(input[i], 1))
+                {
+                    // If key already exists, then increment it by 1.
+                    count[input[i]]++;
+
+                    // Check if current number is larger than previous mode.
+                    if (count[input[i]] > max)
+                    {
+                        // Set mode to current number.
+                        max = count[input[i]];
+                        mode = input[i];
+                    }
+                }
+            }
+            return mode;
+        }
+
+        
     }
 }
