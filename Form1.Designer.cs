@@ -171,6 +171,7 @@
             ButtonMode.TabIndex = 10;
             ButtonMode.Text = "Mode";
             ButtonMode.UseVisualStyleBackColor = true;
+            ButtonMode.Click += ButtonMode_Click;
             // 
             // TextBoxAverage
             // 
@@ -190,6 +191,7 @@
             ButtonAverage.TabIndex = 12;
             ButtonAverage.Text = "Average";
             ButtonAverage.UseVisualStyleBackColor = true;
+            ButtonAverage.Click += ButtonAverage_Click;
             // 
             // TextBoxRange
             // 
@@ -220,6 +222,7 @@
             ButtonSequentialSearch.TabIndex = 16;
             ButtonSequentialSearch.Text = "Sequential Search";
             ButtonSequentialSearch.UseVisualStyleBackColor = true;
+            ButtonSequentialSearch.Click += ButtonSequentialSearch_Click;
             // 
             // LabelMathsFunctions
             // 

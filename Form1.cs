@@ -1,9 +1,10 @@
-// Andrew Toplass, La-Jean Harvey, Sprint One
+// Andrew Toplass, La-Jean Harvey, Sprint Two
 // Date: 21/03/2024
 // Version: 1.0
 // Astronomical Processing
 // Stores number of neutrino interactions per hour, allows for editing, sorting
-// and searching through the data.
+// and searching through the data, and also calculates the average, mode, range
+// and mid-extreme of the data.
 
 namespace AstronomicalProcessing
 {
@@ -116,7 +117,6 @@ namespace AstronomicalProcessing
                 MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
         }
 
         // Performs the Search when pressing enter.
@@ -124,9 +124,50 @@ namespace AstronomicalProcessing
         {
             if (e.KeyCode == Keys.Enter)
             {
-                // If the key enter key was pressed, click the search button.
-                ButtonSearchData.PerformClick();
-                e.SuppressKeyPress = true;
+                // If shift key is held down, then perform sequential search.
+                if (e.Modifiers == Keys.Shift)
+                {
+                    // If the key enter key was pressed, click the search button.
+                    ButtonSequentialSearch.PerformClick();
+                    e.SuppressKeyPress = true;
+                }
+                // Otherwise, perform binary search, which requires sorting.
+                else
+                {
+                    // If the key enter key was pressed, click the search button.
+                    ButtonSearchData.PerformClick();
+                    e.SuppressKeyPress = true;
+                }
+                
+            }
+        }
+
+        // Performs the sequential search when clicking the sequential search button.
+        private void ButtonSequentialSearch_Click(object sender, EventArgs e)
+        {
+            // Try and get a data value from search textbox.
+            if (int.TryParse(TextBoxSearchData.Text, out int value))
+            {
+                // Run the binary search on the data array with the input from
+                // the search textbox.
+                int idx = SequentialSearch(data, value);
+                if (idx >= 0)
+                {
+                    // Select & highlight item that was found in the array.
+                    ListBoxData.SelectedIndex = idx;
+                    // Show message saying where the item was found.
+                    MessageBox.Show($"Item {value} found at index: {idx}.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // Warn user that the item they searched for was not found.
+                    MessageBox.Show($"Item not found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You must enter an integer number.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -143,11 +184,33 @@ namespace AstronomicalProcessing
         {
             TextBoxRange.Text = Range(data).ToString();
         }
+        
         // Finds the Mid-Range and then displays it.
         private void ButtonMidRange_Click(object sender, EventArgs e)
         {
-
             TextBoxMidRange.Text = $"{MidRange(data):f2}";
+        }
+
+        // Get the mode of the data when clicking on the mode button.
+        private void ButtonMode_Click(object sender, EventArgs e)
+        {
+            int mode = Mode(data);
+            if (mode < 0)
+            {
+                // If mode equals -1, then output: No Mode.
+                TextBoxMode.Text = "No Mode";
+            }
+            else
+            {
+                // Otherwise, output the mode of the array.
+                TextBoxMode.Text = mode.ToString();
+            }
+        }
+
+        // Get the average of the data when clicking the average button.
+        private void ButtonAverage_Click(object sender, EventArgs e)
+        {
+            TextBoxAverage.Text = $"{Average(data):f2}";
         }
 
         /// <summary>
@@ -246,12 +309,10 @@ namespace AstronomicalProcessing
             return -1;
         }
 
-
-
         /// <summary>
         /// Does the Range Calculation.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">An array of integers.</param>
         /// <returns>The data array you want to find the Range of.</returns>
         private static int Range(int[] input)
         {
@@ -263,7 +324,7 @@ namespace AstronomicalProcessing
         /// <summary>
         /// Does the Mid-Range Calculation.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">An array of integers.</param>
         /// <returns>The data array you want to find the Mid-Range of.</returns>
         private static double MidRange(int[] input)
         {
@@ -275,7 +336,7 @@ namespace AstronomicalProcessing
         /// <summary>
         /// Finds the Largest number in an Array.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">An array of integers.</param>
         /// <returns>The data you want to find the largest number for.</returns>
         static private int Largest(int[] input)
         {
@@ -294,7 +355,7 @@ namespace AstronomicalProcessing
         /// <summary>
         /// Finds the Smallest number in an Array.
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="input">An array of integers.</param>
         /// <returns>The data you want to find the smallest number for.</returns>
         static private int Smallest(int[] input)
         {
@@ -309,5 +370,79 @@ namespace AstronomicalProcessing
             }
             return smallest;
         } 
+
+        /// <summary>
+        /// Performs a sequential search.
+        /// </summary>
+        /// <param name="input">An array of integers to search through.</param>
+        /// <param name="target">The integer to search for.</param>
+        /// <returns>The index of the target integer, or -1 if is wasn't found.</returns>
+        private static int SequentialSearch(int[] input, int target)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                // If the current element is equal to the target, return the index.
+                if (input[i] == target)
+                {
+                    return i;
+                }
+            }
+            // If the target wasn't found, then return -1.
+            return -1;
+        }
+
+        /// <summary>
+        /// Calculate the average from an array of integer inputs.
+        /// </summary>
+        /// <param name="input">An array of integers.</param>
+        /// <returns>The average of all the integers in the input array, as a double.</returns>
+        private static double Average(int[] input)
+        {
+            // Get the sum of the data using a for loop.
+            int sum = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                // Add each array value to the sum integer.
+                sum += input[i];
+            }
+            // Divide the sum by the number of items, converting to a double.
+            return sum / (double)input.Length;
+        }
+
+        /// <summary>
+        /// Calculates the mode from an array of integer inputs.
+        /// </summary>
+        /// <param name="input">An array of integers</param>
+        /// <returns>The most frequently occuring number inside the array, or -1 if no mode is found.</returns>
+        private static int Mode(int[] input)
+        {
+            // Use dictionary to keep track of occurrences.
+            Dictionary<int, int> count = [];
+
+            // Keep track of current mode.
+            int mode = -1;
+            // Number of occurrences of current mode.
+            int max = 1;
+
+            // Loop through every array element to search for occurrences.
+            for (int i = 0; i < input.Length; i++)
+            {
+                // Add dictionary key for array element, defaulting to 1.
+                if (!count.TryAdd(input[i], 1))
+                {
+                    // If key already exists, then increment it by 1.
+                    count[input[i]]++;
+
+                    // Check if current number is larger than previous mode.
+                    if (count[input[i]] > max)
+                    {
+                        // Set mode to current number.
+                        max = count[input[i]];
+                        mode = input[i];
+                    }
+                }
+            }
+            return mode;
+        }
     }
 }
