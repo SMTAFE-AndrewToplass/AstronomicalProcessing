@@ -198,7 +198,7 @@ namespace AstronomicalProcessing
             if (mode < 0)
             {
                 // If mode equals -1, then output: No Mode.
-                TextBoxMode.Text = "No Mode";
+                TextBoxMode.Text = "No mode";
             }
             else
             {

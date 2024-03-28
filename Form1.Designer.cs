@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AstronomicalProcessing));
             ListBoxData = new ListBox();
             LblSearchData = new Label();
             TextBoxSearchData = new TextBox();
@@ -48,6 +50,7 @@
             LabelMathsFunctions = new Label();
             TableLayoutMathsFunctions = new TableLayoutPanel();
             TableLayoutSearch = new TableLayoutPanel();
+            ToolTipAstronomicalProcessing = new ToolTip(components);
             TableLayoutMathsFunctions.SuspendLayout();
             TableLayoutSearch.SuspendLayout();
             SuspendLayout();
@@ -78,8 +81,10 @@
             TextBoxSearchData.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TextBoxSearchData.Location = new Point(12, 351);
             TextBoxSearchData.Name = "TextBoxSearchData";
+            TextBoxSearchData.PlaceholderText = "Enter an integer to search for";
             TextBoxSearchData.Size = new Size(324, 23);
             TextBoxSearchData.TabIndex = 2;
+            ToolTipAstronomicalProcessing.SetToolTip(TextBoxSearchData, resources.GetString("TextBoxSearchData.ToolTip"));
             TextBoxSearchData.KeyDown += TextBoxSearchData_KeyDown;
             // 
             // ButtonSearchData
@@ -90,6 +95,7 @@
             ButtonSearchData.Size = new Size(159, 25);
             ButtonSearchData.TabIndex = 3;
             ButtonSearchData.Text = "Binary Search";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonSearchData, "Perform a Binary Search for the value inside the search box.");
             ButtonSearchData.UseVisualStyleBackColor = true;
             ButtonSearchData.Click += ButtonSearchData_Click;
             // 
@@ -101,6 +107,7 @@
             ButtonSortData.Size = new Size(324, 25);
             ButtonSortData.TabIndex = 4;
             ButtonSortData.Text = "Sort data";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonSortData, "Sort the data from the smallest value to the largest value.");
             ButtonSortData.UseVisualStyleBackColor = true;
             ButtonSortData.Click += ButtonSortData_Click;
             // 
@@ -109,8 +116,10 @@
             TextBoxEditItem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TextBoxEditItem.Location = new Point(12, 27);
             TextBoxEditItem.Name = "TextBoxEditItem";
+            TextBoxEditItem.PlaceholderText = "Select an item to edit it";
             TextBoxEditItem.Size = new Size(243, 23);
             TextBoxEditItem.TabIndex = 5;
+            ToolTipAstronomicalProcessing.SetToolTip(TextBoxEditItem, "Enter an integer number to edit, then press enter or click 'Apply' to edit the data.");
             TextBoxEditItem.KeyDown += TextBoxEditItem_KeyDown;
             // 
             // LblEditItem
@@ -130,6 +139,7 @@
             ButtonEditApply.Size = new Size(75, 25);
             ButtonEditApply.TabIndex = 7;
             ButtonEditApply.Text = "Apply";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonEditApply, "Apply the edited value to the data from the edit box.");
             ButtonEditApply.UseVisualStyleBackColor = true;
             ButtonEditApply.Click += ButtonEditApply_Click;
             // 
@@ -141,6 +151,7 @@
             ButtonMidRange.Size = new Size(76, 23);
             ButtonMidRange.TabIndex = 8;
             ButtonMidRange.Text = "Mid-range";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonMidRange, "Calculate the mid-extreme or mid-range of the data.");
             ButtonMidRange.UseVisualStyleBackColor = true;
             ButtonMidRange.Click += ButtonMidRange_Click;
             // 
@@ -170,6 +181,7 @@
             ButtonMode.Size = new Size(76, 23);
             ButtonMode.TabIndex = 10;
             ButtonMode.Text = "Mode";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonMode, "Calculate the mode of the data, displaying 'No mode' if nothing is found.");
             ButtonMode.UseVisualStyleBackColor = true;
             ButtonMode.Click += ButtonMode_Click;
             // 
@@ -190,6 +202,7 @@
             ButtonAverage.Size = new Size(76, 23);
             ButtonAverage.TabIndex = 12;
             ButtonAverage.Text = "Average";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonAverage, "Calculate the average of the data to 2 decimal places.");
             ButtonAverage.UseVisualStyleBackColor = true;
             ButtonAverage.Click += ButtonAverage_Click;
             // 
@@ -210,6 +223,7 @@
             ButtonRange.Size = new Size(76, 23);
             ButtonRange.TabIndex = 14;
             ButtonRange.Text = "Range";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonRange, "Calculate the range of the data.");
             ButtonRange.UseVisualStyleBackColor = true;
             ButtonRange.Click += ButtonRange_Click;
             // 
@@ -221,6 +235,7 @@
             ButtonSequentialSearch.Size = new Size(159, 25);
             ButtonSequentialSearch.TabIndex = 16;
             ButtonSequentialSearch.Text = "Sequential Search";
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonSequentialSearch, "Perform a Sequential Search for the value inside the search box.\r\n");
             ButtonSequentialSearch.UseVisualStyleBackColor = true;
             ButtonSequentialSearch.Click += ButtonSequentialSearch_Click;
             // 
@@ -278,6 +293,13 @@
             TableLayoutSearch.Size = new Size(330, 31);
             TableLayoutSearch.TabIndex = 19;
             // 
+            // ToolTipAstronomicalProcessing
+            // 
+            ToolTipAstronomicalProcessing.AutomaticDelay = 250;
+            ToolTipAstronomicalProcessing.AutoPopDelay = 10000;
+            ToolTipAstronomicalProcessing.InitialDelay = 250;
+            ToolTipAstronomicalProcessing.ReshowDelay = 50;
+            // 
             // AstronomicalProcessing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -325,5 +347,6 @@
         private Label LabelMathsFunctions;
         private TableLayoutPanel TableLayoutMathsFunctions;
         private TableLayoutPanel TableLayoutSearch;
+        private ToolTip ToolTipAstronomicalProcessing;
     }
 }
