@@ -194,16 +194,17 @@ namespace AstronomicalProcessing
         // Get the mode of the data when clicking on the mode button.
         private void ButtonMode_Click(object sender, EventArgs e)
         {
-            int mode = Mode(data);
-            if (mode < 0)
+            int[] mode = Mode(data);
+            if (mode[0] < 0)
             {
-                // If mode equals -1, then output: No Mode.
+                // If mode equals -1, then output: No mode.
                 TextBoxMode.Text = "No mode";
             }
             else
             {
-                // Otherwise, output the mode of the array.
-                TextBoxMode.Text = mode.ToString();
+                // Otherwise, output the mode of the array and the number of
+                // occurrences of the mode.
+                TextBoxMode.Text = $"{mode[0]}, {mode[1]}";
             }
         }
 
@@ -413,8 +414,8 @@ namespace AstronomicalProcessing
         /// Calculates the mode from an array of integer inputs.
         /// </summary>
         /// <param name="input">An array of integers</param>
-        /// <returns>The most frequently occuring number inside the array, or -1 if no mode is found.</returns>
-        private static int Mode(int[] input)
+        /// <returns>An array containing the mode (-1 if no mode) and the number of occurrences.</returns>
+        private static int[] Mode(int[] input)
         {
             // Use dictionary to keep track of occurrences.
             Dictionary<int, int> count = [];
@@ -442,7 +443,9 @@ namespace AstronomicalProcessing
                     }
                 }
             }
-            return mode;
+            // Return mode and number of occurrences.
+            int[] output = [mode, max];
+            return output;
         }
     }
 }
