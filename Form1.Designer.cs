@@ -95,7 +95,7 @@
             ButtonSearchData.Size = new Size(159, 25);
             ButtonSearchData.TabIndex = 3;
             ButtonSearchData.Text = "Binary Search";
-            ToolTipAstronomicalProcessing.SetToolTip(ButtonSearchData, "Perform a Binary Search for the value inside the search box.");
+            ToolTipAstronomicalProcessing.SetToolTip(ButtonSearchData, "Perform a Binary Search for the value inside the search box. This\r\nrequires data to be sorted before searching.");
             ButtonSearchData.UseVisualStyleBackColor = true;
             ButtonSearchData.Click += ButtonSearchData_Click;
             // 
