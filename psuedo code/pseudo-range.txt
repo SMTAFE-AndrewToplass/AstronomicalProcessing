@@ -1,0 +1,7 @@
+FUNCTION Range, input(TYPE: ARRAY)
+    SET low TO 0
+    SET high TO LENGTH(ARRAY)
+
+    SET outcome TO high SUBTRACT low
+    RETURN outcome
+END FUNCTION

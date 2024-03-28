@@ -1,0 +1,8 @@
+FUNCTION Mid-Extreme, input(TYPE: ARRAY)
+    SET low TO 0
+    SET high TO LENGTH(ARRAY)
+
+    SET outcome TO high ADD low
+    SET outcome TO outcome DIVIDED BY 2
+    RETURN outcome
+END FUNCTION
