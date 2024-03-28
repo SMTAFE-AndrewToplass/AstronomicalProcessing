@@ -1,9 +1,10 @@
-// Andrew Toplass, La-Jean Harvey, Sprint One
+// Andrew Toplass, La-Jean Harvey, Sprint Two
 // Date: 21/03/2024
 // Version: 1.0
 // Astronomical Processing
 // Stores number of neutrino interactions per hour, allows for editing, sorting
-// and searching through the data.
+// and searching through the data, and also calculates the average, mode, range
+// and mid-extreme of the data.
 
 namespace AstronomicalProcessing
 {
