@@ -148,6 +148,7 @@
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.Location = new Point(3, 3);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(76, 23);
             textBox1.TabIndex = 9;
             // 
@@ -156,6 +157,7 @@
             textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox2.Location = new Point(85, 3);
             textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
             textBox2.Size = new Size(76, 23);
             textBox2.TabIndex = 11;
             // 
@@ -174,6 +176,7 @@
             textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox3.Location = new Point(167, 3);
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
             textBox3.Size = new Size(76, 23);
             textBox3.TabIndex = 13;
             // 
@@ -192,6 +195,7 @@
             textBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox4.Location = new Point(249, 3);
             textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
             textBox4.Size = new Size(76, 23);
             textBox4.TabIndex = 15;
             // 
